@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login_token/homescreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,6 +34,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  TextEditingController _email = new TextEditingController();
+  TextEditingController _password = new TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -57,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: [
                   TextFormField(
-                    //controller: _email,
+                    controller: _email,
                     decoration: InputDecoration(
                       fillColor: Color(0xffF1F0F5),
                       filled: true,
@@ -77,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                   TextFormField(
                     
-                    //controller: _password,
+                    controller: _password,
                     decoration: InputDecoration(
                       fillColor: Color(0xffF1F0F5),
                       filled: true,
@@ -104,8 +109,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: [
                    ElevatedButton(
                     onPressed: (){
-                    //Navigator.push(context,
-                    //MaterialPageRoute(builder: (context)=> listExample()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context)=> home(email: _email.text, password: _password.text)
+                    ),
+                    );
                     }, child: Text('Log In')),
 
                     TextButton(
