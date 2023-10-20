@@ -1,35 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:login_token/main.dart';
+import 'package:login_token/screen/homescreen.dart';
 
-class splashScreen extends StatefulWidget {
-  const splashScreen({super.key});
-
+class SplashScreen extends StatefulWidget {
+  final String ? emailSplashScreen;
+  final String ? passwordSplashScreen;
+  const SplashScreen({super.key,required this.emailSplashScreen, required this.passwordSplashScreen});
+  
   @override
-  State<splashScreen> createState() => _splashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _splashScreenState extends State<splashScreen> { 
+class _SplashScreenState extends State<SplashScreen> { 
   @override
-  void iniState() async{
+  void initState() {
+    // TODO: implement initState
+    goToHome(); 
     super.initState();
-    goToHome();
-
-    // await Future.delayed(sonst Duration(seconds: 1), () {
-    //   Navigator.pushAndRemoveUntil(
-    //     context,
-    //     MaterialPageRoute(builder: (context) => const home()),
-    //     (Route<dynamic> route) => false,
-    // );
-
-    // });
-    }
-
-    void goToHome() async {
-      await Future.delayed(sonst Duration(seconds: 1), () {
-      Navigator.pushAndRemoveUntil(
+  }
+ 
+    //start
+     goToHome() async {
+      await Future.delayed(const Duration(seconds: 5), () {
+        if(widget.emailSplashScreen!.isNotEmpty && widget.passwordSplashScreen!.isNotEmpty) {
+          Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => const home()),
+        MaterialPageRoute(builder: (context) => HomeScreen(email: widget.emailSplashScreen.toString(), 
+        password: widget.passwordSplashScreen.toString())),
         (Route<dynamic> route) => false,
     );
+        }
+        else{
+           Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => MyApp()),
+        (Route<dynamic> route) => false,
+    );
+          
+
+        }
+      
+
+
 
     });
     }
@@ -44,11 +56,9 @@ class _splashScreenState extends State<splashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
 
-            //letak image
-
             Image.asset(
-              "assets/images/logo.png",
-              width: 50,
+              'assets/images/logo1.png',
+              width: 5100,
             ),
 
             Container(
@@ -73,8 +83,8 @@ class _splashScreenState extends State<splashScreen> {
                   Container(
                     margin: const EdgeInsets.only(left: 10),
                     child: const Text(' Loading..',
-                    style: TextStyle(
-                      color: Colors.black,
+                    style: TextStyle( 
+                      color: Colors.black,              
                       fontSize: 18,
                     ),
                     ),

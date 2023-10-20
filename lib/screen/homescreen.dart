@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class home extends StatelessWidget {
-  //const home({super.key});
+class HomeScreen extends StatelessWidget {
+  //const HomeScreen({super.key});
   String email, password;
 
-  home({required this.email, required this.password});
+  HomeScreen({required this.email, required this.password});
 
-
+  
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +14,14 @@ class home extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         
-        title: Text('Home Screen'),
+        title: Text('HomeScreen'),
         centerTitle: true,
         backgroundColor: Colors.deepOrange,
  
       ),
-
+                   
       body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
+        
         children : [
           Text('Email: ${email}'),
           Text('Password: ${password}'),
